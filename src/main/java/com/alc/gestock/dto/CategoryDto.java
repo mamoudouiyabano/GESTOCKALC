@@ -22,7 +22,7 @@ public class CategoryDto {
 
 
     @JsonIgnore
-    private List<ItemDto> itemDtos;
+    private List<ItemDto> items;
 
     public static CategoryDto fromEntity(Category category)
     {

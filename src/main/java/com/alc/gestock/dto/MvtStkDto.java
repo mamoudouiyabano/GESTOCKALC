@@ -31,7 +31,7 @@ public class MvtStkDto {
 
     private SourceMvtStk sourceMvtStk;
 
-    private Integer idEntreprise;
+
 
     public static MvtStkDto fromEntity(MvtStk mvtStk)
     {

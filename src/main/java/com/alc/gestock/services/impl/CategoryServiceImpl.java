@@ -85,7 +85,7 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findById(id)
                 .map(CategoryDto::fromEntity)
                 .orElseThrow(() -> new EntityNotFoundException(
-                        "Aucune categorie avec l'ID = " + id + " n'ete trouve dans la BDD",
+                        "Aucune categorie avec l'ID = " + id + " n existe dans la BDD",
                         ErrorCodes.CATEGORY_NOT_FOUND
                 ));
 

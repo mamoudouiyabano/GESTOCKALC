@@ -57,13 +57,14 @@ public class UtilisateurDto {
         }
 
         Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setId(utilisateur.getId());
-        utilisateur.setNom(utilisateur.getNom());
-        utilisateur.setPrenom(utilisateur.getPrenom());
-        utilisateur.setPhoto(utilisateur.getPhoto());
-        utilisateur.setEmail(utilisateur.getEmail());
-        utilisateur.setMotDePasse(utilisateur.getMotDePasse());
-        utilisateur.setRole(utilisateur.getRole());
+        utilisateur.setId(utilisateurDto.getId());
+        utilisateur.setNom(utilisateurDto.getNom());
+        utilisateur.setPrenom(utilisateurDto.getPrenom());
+        utilisateur.setPhoto(utilisateurDto.getPhoto());
+        utilisateur.setEmail(utilisateurDto.getEmail());
+        utilisateur.setMotDePasse(utilisateurDto.getMotDePasse());
+        utilisateur.setRole(utilisateurDto.getRole());
+
         return utilisateur;
 
     }

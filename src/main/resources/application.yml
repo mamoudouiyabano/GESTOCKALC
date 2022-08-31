@@ -5,6 +5,9 @@ spring:
     username: root
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   ## Specify DBMS
   jpa:
     database: MYSQL
@@ -17,3 +20,9 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
 server:
   port : 8084
+
+flickr:
+  apiKey: 7f619d432c1c0f054eac39ff12b09e55
+  apiSecret: 38ab5d03a45347f6
+  appKey: 72157720851582184-abad76662094ea85
+  appSecret: 4b0436ee71dfd1e7

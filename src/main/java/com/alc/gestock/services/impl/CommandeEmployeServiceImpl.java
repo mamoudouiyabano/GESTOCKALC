@@ -139,7 +139,7 @@ public class CommandeEmployeServiceImpl implements CommandeEmployeService {
 
 
     @Override
-    public List<LigneCmdEmployeDto> findAllLignesCommandesEmployeByCommandeItemId(Integer idCommande) {
+    public List<LigneCmdEmployeDto> findAllLignesCommandesEmployeByCommandeEmployeId(Integer idCommande) {
         return ligneCommandeEmployeRepository.findAllByCommandeEmployeId(idCommande).stream()
                 .map(LigneCmdEmployeDto::fromEntity)
                 .collect(Collectors.toList());

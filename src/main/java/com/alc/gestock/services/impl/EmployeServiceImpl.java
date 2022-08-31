@@ -28,7 +28,7 @@ public class EmployeServiceImpl implements EmployeService {
     private CommandeEmployeRepository commandeEmployeRepository;
 
     @Autowired
-    public EmployeServiceImpl(EmployeRepository EmployeRepository, CommandeEmployeRepository commandeEmployeRepository) {
+    public EmployeServiceImpl(EmployeRepository employeRepository, CommandeEmployeRepository commandeEmployeRepository) {
         this.employeRepository = employeRepository;
         this.commandeEmployeRepository = commandeEmployeRepository;
     }

@@ -28,7 +28,8 @@ public interface CommandeEmployeService {
 
     List<CommandeEmployeDto> findAll();
 
-    List<LigneCmdEmployeDto> findAllLignesCommandesEmployeByCommandeItemId(Integer idCommande);
+    List<LigneCmdEmployeDto> findAllLignesCommandesEmployeByCommandeEmployeId(Integer idCommande);
+
 
     void delete(Integer id);
 }

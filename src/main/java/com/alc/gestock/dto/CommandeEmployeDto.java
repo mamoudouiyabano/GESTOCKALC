@@ -25,7 +25,7 @@ public class CommandeEmployeDto {
 
     private EmployeDto employe;
 
-    @JsonIgnore
+
     private List<LigneCmdEmployeDto> ligneCmdEmployeDtos;
 
     public static CommandeEmployeDto fromEntity(CommandeEmploye commandeEmploye)

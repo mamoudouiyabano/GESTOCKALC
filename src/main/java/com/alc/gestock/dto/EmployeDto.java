@@ -2,6 +2,7 @@ package com.alc.gestock.dto;
 
 import com.alc.gestock.model.CommandeEmploye;
 import com.alc.gestock.model.Employe;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -28,6 +29,7 @@ public class EmployeDto {
 
     private Instant dateEmbauche;
 
+    @JsonIgnore
     private List<CommandeEmploye> commandeEmployes;
 
 

@@ -36,12 +36,13 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Override
     public UtilisateurDto save(UtilisateurDto dto) {
-        List<String> errors = UtilisateurValidator.validate(dto);
+        List<String> errors = UtilisateurValidator.Validate(dto);
 
         if (!errors.isEmpty()){
             log.error("User not valid");
             throw new InvalidEntityException("urilisateur not valide" , ErrorCodes.UTILISATEUR_NOT_VALID,errors);
         }
+
     return UtilisateurDto.fromEntity(utilisateurRepository.save(UtilisateurDto.toEntity(dto)));
 
     }

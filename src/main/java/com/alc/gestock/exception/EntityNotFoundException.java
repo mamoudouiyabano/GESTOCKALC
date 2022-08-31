@@ -21,7 +21,7 @@ public class EntityNotFoundException  extends RuntimeException {
     }
 
     public EntityNotFoundException(String message ,  ErrorCodes errorCodes){
-        super(message );
+        super(message);
         this.errorCodes = errorCodes;
     }
 

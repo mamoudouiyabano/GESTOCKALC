@@ -35,7 +35,7 @@ public class MvtStkServiceImpl implements MvtStkService {
 
     @Override
     public MvtStkDto save(MvtStkDto dto) {
-        List<String> errors = MvtStockValidator.Validate(dto);
+        List<String> errors = MvtStockValidator .Validate(dto);
 
         if (!errors.isEmpty())
         {
@@ -88,7 +88,7 @@ public class MvtStkServiceImpl implements MvtStkService {
             log.warn("ID Item is NULL");
             return   BigDecimal.valueOf(-1);
         }
-        ItemService.findById(idItem);
+//        ItemService.findById(idItem);
         return mvtStkRepository.stockReelItem(idItem);
     }
 
