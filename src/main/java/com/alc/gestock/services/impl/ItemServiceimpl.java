@@ -1,5 +1,6 @@
 package com.alc.gestock.services.impl;
 
+import com.alc.gestock.dto.CategoryDto;
 import com.alc.gestock.dto.ItemDto;
 import com.alc.gestock.dto.LigneCmdEmployeDto;
 import com.alc.gestock.exception.EntityNotFoundException;
@@ -58,14 +59,21 @@ public class ItemServiceimpl implements ItemService {
             return  null;
         }
 
-        Optional<Item> Item = itemRepository.findById(id);
+//        Optional<Item> item = itemRepository.findById(id);
+//
+//        ItemDto dto = ItemDto.fromEntity(item.get());
+//
+//        return Optional.of(dto).orElseThrow(()-> new EntityNotFoundException(
+//                "Aucun Item avec l'ID = " + id + " na  pâs été trouvé dans la BDD",
+//                ErrorCodes.ITEM_NOT_FOUND
+//        ));
 
-        ItemDto dto = ItemDto.fromEntity(Item.get());
-
-        return Optional.of(dto).orElseThrow(()-> new EntityNotFoundException(
-                "Aucun Item avec l'ID = " +id+ " na  pâs été trouvé dans la BDD",
-                ErrorCodes.ITEM_NOT_FOUND
-        ));
+        return itemRepository.findById(id)
+                .map(ItemDto::fromEntity)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Aucun Item avec l'ID = " + id + " na  pâs été trouvé dans la BDD",
+                        ErrorCodes.ITEM_NOT_FOUND
+                ));
 
     }
 

@@ -18,44 +18,42 @@ import java.util.Collections;
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<ErrorDto> handleException(EntityNotFoundException exception, WebRequest webRequest){
+    public ErrorDto  handleException(EntityNotFoundException exception, WebRequest webRequest){
         ErrorDto errorDto = new ErrorDto();
         final HttpStatus notFound = HttpStatus.NOT_FOUND;
-          ErrorDto.builder()
-                .code(exception.getErrorCodes())
-                .httpCode(notFound.value())
-                .message(exception.getMessage())
-                .build();
+        errorDto.setCode(exception.getErrorCodes());
+        errorDto.setMessage(exception.getMessage());
+        errorDto.setHttpCode(notFound.value());
 
-        return new ResponseEntity<>(errorDto , notFound );
+        return errorDto;
+
+
     }
 
     @ExceptionHandler(InvalidEntityException.class)
-    public ResponseEntity<ErrorDto> handleException(InvalidEntityException exception , WebRequest webRequest){
+    public ErrorDto handleException(InvalidEntityException exception , WebRequest webRequest){
 
         final HttpStatus badRequest = HttpStatus.BAD_REQUEST;
 
         ErrorDto errorDto = new ErrorDto();
-        ErrorDto.builder()
-                .code(exception.getErrorCodes())
-                .httpCode(badRequest.value())
-                .message(exception.getMessage())
-                .errors(exception.getErrors())
-                .build();
-        return new ResponseEntity<>(errorDto , badRequest);
+        errorDto.setCode(exception.getErrorCodes());
+        errorDto.setMessage(exception.getMessage());
+        errorDto.setHttpCode(badRequest.value());
+        errorDto.setErrors(exception.getErrors());
+
+        return errorDto;
     }
 
     @ExceptionHandler(InvalidOperationException.class)
-    public ResponseEntity<ErrorDto> handleException(InvalidOperationException exception, WebRequest webRequest){
-        ErrorDto errorDto = new ErrorDto();
-        final HttpStatus notFound = HttpStatus.BAD_REQUEST;
-        ErrorDto.builder()
-                .code(exception.getErrorCodes())
-                .httpCode(notFound.value())
-                .message(exception.getMessage())
-                .build();
+    public ErrorDto handleException(InvalidOperationException exception, WebRequest webRequest){
 
-        return new ResponseEntity<>(errorDto , notFound );
+        final HttpStatus notFound = HttpStatus.BAD_REQUEST;
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setCode(exception.getErrorCodes());
+        errorDto.setMessage(exception.getMessage());
+        errorDto.setHttpCode(notFound.value());
+
+        return errorDto;
     }
 
     @ExceptionHandler(BadCredentialsException.class)
