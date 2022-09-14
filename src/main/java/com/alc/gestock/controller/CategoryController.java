@@ -4,11 +4,13 @@ import com.alc.gestock.controller.api.CategoryApi;
 import com.alc.gestock.dto.CategoryDto;
 import com.alc.gestock.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class CategoryController implements CategoryApi {
 
     private CategoryService categoryService;

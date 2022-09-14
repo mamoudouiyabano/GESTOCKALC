@@ -102,6 +102,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         validate(dto);
 
+
         Optional<Utilisateur> utilisateurOptionnal = utilisateurRepository.findById(dto.getId());
         if(Objects.isNull(utilisateurOptionnal)) {
             log.error("Aucun utilisateur na ete trouve avec l'id "+dto.getId());

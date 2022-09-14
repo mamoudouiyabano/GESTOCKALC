@@ -7,12 +7,14 @@ import com.alc.gestock.model.EtatCommande;
 import com.alc.gestock.services.CommandeEmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class CommandeEmployeController implements CommandeEmployeApi {
 
     private CommandeEmployeService commandeEmployeService;

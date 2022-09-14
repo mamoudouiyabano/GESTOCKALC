@@ -5,11 +5,13 @@ import com.alc.gestock.controller.api.EmployeApi;
 import com.alc.gestock.dto.EmployeDto;
 import com.alc.gestock.services.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class EmployeController implements EmployeApi {
 
     private com.alc.gestock.services.EmployeService employeService;
