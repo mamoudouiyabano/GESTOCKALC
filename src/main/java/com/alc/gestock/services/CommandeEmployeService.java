@@ -28,6 +28,8 @@ public interface CommandeEmployeService {
 
     List<CommandeEmployeDto> findAll();
 
+    List<LigneCmdEmployeDto> findAllLignesCmdes();
+
     List<LigneCmdEmployeDto> findAllLignesCommandesEmployeByCommandeEmployeId(Integer idCommande);
 
 

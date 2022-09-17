@@ -30,6 +30,9 @@ public class Item  extends AbstractEntity{
     @Column(name="tauxtva")
     private BigDecimal tauxTva;
 
+    @Column(name="quantite")
+    private BigDecimal quantite;
+
     @Column(name="prixunitairettc")
     private BigDecimal prixUnitaireTtc;
 

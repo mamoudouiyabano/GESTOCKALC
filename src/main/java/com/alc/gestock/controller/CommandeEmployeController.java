@@ -79,6 +79,12 @@ public class CommandeEmployeController implements CommandeEmployeApi {
     }
 
     @Override
+    public ResponseEntity<List<LigneCmdEmployeDto>> findAllLignesCmdes() {
+        return ResponseEntity.ok(commandeEmployeService.findAllLignesCmdes());
+
+    }
+
+    @Override
     public ResponseEntity<Void> delete(Integer id) {
         commandeEmployeService.delete(id);
         return ResponseEntity.ok().build();

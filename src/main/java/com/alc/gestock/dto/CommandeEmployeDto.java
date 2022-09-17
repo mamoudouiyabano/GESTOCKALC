@@ -10,6 +10,9 @@ import lombok.Data;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Builder
 @Data
@@ -26,6 +29,7 @@ public class CommandeEmployeDto {
     private EmployeDto employe;
 
 
+
     private List<LigneCmdEmployeDto> ligneCmdEmployeDtos;
 
     public static CommandeEmployeDto fromEntity(CommandeEmploye commandeEmploye)
@@ -35,12 +39,19 @@ public class CommandeEmployeDto {
             return null;
         }
 
+
+
         return CommandeEmployeDto.builder()
                 .id(commandeEmploye.getId())
                 .code(commandeEmploye.getCode())
                 .dateCommande(commandeEmploye.getDateCommande())
                 .etatCommande(commandeEmploye.getEtatCommande())
                 .employe(EmployeDto.fromEntity(commandeEmploye.getEmploye()))
+//                .ligneCmdEmployeDtos(commandeEmploye.getLigneCmdEmployes() != null ?
+//                        commandeEmploye.getLigneCmdEmployes().stream()
+//                        .map(LigneCmdEmployeDto::fromEntity)
+//                        .collect(Collectors.toList()): null)
+
                 .build();
     }
 

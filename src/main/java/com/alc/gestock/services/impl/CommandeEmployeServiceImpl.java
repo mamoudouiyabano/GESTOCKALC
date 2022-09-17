@@ -94,10 +94,12 @@ public class CommandeEmployeServiceImpl implements CommandeEmployeService {
                 LigneCmdEmploye ligneCommandeEmploye = LigneCmdEmployeDto.toEntity(ligCmdEmpl);
                 ligneCommandeEmploye.setCommandeEmploye(savedCmdEmpl);
                 ligneCommandeEmployeRepository.save(ligneCommandeEmploye);
+
             });
         }
 
-
+        // update mvt mvt stock
+        updateMvtStk(savedCmdEmpl.getId());
         return CommandeEmployeDto.fromEntity(savedCmdEmpl);
     }
 
@@ -134,6 +136,14 @@ public class CommandeEmployeServiceImpl implements CommandeEmployeService {
                 .map(CommandeEmployeDto::fromEntity)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<LigneCmdEmployeDto> findAllLignesCmdes() {
+        return ligneCommandeEmployeRepository.findAll().stream()
+                .map(LigneCmdEmployeDto::fromEntity)
+                .collect(Collectors.toList());
+    }
+
 
 
 

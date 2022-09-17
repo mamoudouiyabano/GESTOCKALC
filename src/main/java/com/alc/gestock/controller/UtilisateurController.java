@@ -27,6 +27,11 @@ public class UtilisateurController implements UtilisateurApi {
     }
 
     @Override
+    public UtilisateurDto update(UtilisateurDto dto) {
+        return utilisateurService.update(dto);
+    }
+
+    @Override
     public UtilisateurDto changerMotDePasse(ChangerMotDePasseUtilisateurDto dto) {
         return utilisateurService.changerMotDePasse(dto);
     }

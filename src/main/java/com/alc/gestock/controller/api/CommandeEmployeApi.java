@@ -81,8 +81,13 @@ public interface CommandeEmployeApi {
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "La commande employe a ete trouve dans la bd") })
     ResponseEntity<List<CommandeEmployeDto> > findAll();
 
+    @GetMapping(value = APP_ROOT + "/cmdemployes/allLignesCmde" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Renvoi la liste de toute les lignes commandes employe", notes = "Renvoi la liste de toute les lignes commandes employe", responseContainer = "List<LigneCmdEmployeDto>")
+    @ApiResponses(value = {@ApiResponse(code = 200 , message = "La commande employe a ete trouve dans la bd") })
+    ResponseEntity<List<LigneCmdEmployeDto> > findAllLignesCmdes();
+
     @GetMapping(value = APP_ROOT + "/cmdemployes/lignesCommande/{idCommande}" , produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Rechercher toutes les lignescommandes d'un employe par lID de sa commande", notes = "permet de chercher  toutes les lignescommandes d'un employe par lID de sa commande", response = CommandeEmployeDto.class)
+    @ApiOperation(value = "Rechercher toutes les lignescommandes d'un employe par lID de sa commande", notes = "permet de chercher  toutes les lignescommandes d'un employe par lID de sa commande", response = LigneCmdEmployeDto.class)
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "Les lignes ont ete trouvee dans la BDD"),
             @ApiResponse(code = 404 , message = "aucune commande employe existant avec ce code") })
     ResponseEntity<List<LigneCmdEmployeDto>> findAllLignesCommandesEmployeByCommandeEmployeId(@PathVariable("idCommande") Integer idCommande);

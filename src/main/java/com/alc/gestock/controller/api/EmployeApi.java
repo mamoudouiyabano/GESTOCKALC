@@ -23,6 +23,13 @@ public interface EmployeApi {
     })
     EmployeDto save(@RequestBody EmployeDto dto);
 
+    @PostMapping(value = APP_ROOT + "/employes/update" , consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Modifier un employe", notes = "permet modifier un employe ", response = EmployeDto.class)
+    @ApiResponses(value = {@ApiResponse(code = 200 , message = "L'objet employe est modifie"),
+            @ApiResponse(code = 400 , message = "L'objet employe n'est pas valide")
+    })
+    EmployeDto update(@RequestBody EmployeDto dto);
+
     @GetMapping(value = APP_ROOT + "/employes/{idEmploye}" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Rechercher un employe par id", notes = "permet de chercher  un employe par id", response = EmployeDto.class)
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "Le employe a ete trouve dans la bd"),

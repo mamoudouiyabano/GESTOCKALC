@@ -21,7 +21,10 @@ public class EmployeValidator {
             errors.add("veuillez renseigner la date d'embauche de l'employe");
 
         }
-
+        if (!StringUtils.hasLength(employeDto.getCodeEmploye()))
+        {
+            errors.add("veuillez renseigner le code de l'employe");
+        }
         if (!StringUtils.hasLength(employeDto.getNom()))
         {
             errors.add("veuillez renseigner le nom  l'employe");

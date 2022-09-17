@@ -35,6 +35,29 @@ public class EmployeServiceImpl implements EmployeService {
 
     @Override
     public EmployeDto save(EmployeDto dto) {
+
+        List<String> errors = EmployeValidator.Validate(dto);
+
+        if (!errors.isEmpty()){
+            log.error("Employe not valid");
+            throw new InvalidEntityException("Employe not valide" , ErrorCodes.UTILISATEUR_NOT_VALID,errors);
+        }
+
+        Optional<Employe> employe = employeRepository.findEmployeByCodeEmploye(dto.getCodeEmploye());
+        EmployeDto employeDto = EmployeDto.fromEntity(employe.get());
+
+        if (employeDto != null)
+        {
+
+            log.warn("l employe existe deja");
+            throw new InvalidOperationException("l employe existe deja",ErrorCodes.EMPLOYE_ALREADY_EXIST);
+        }
+
+        return EmployeDto.fromEntity(employeRepository.save(EmployeDto.toEntity(dto)));
+    }
+
+    @Override
+    public EmployeDto update(EmployeDto dto) {
         List<String> errors = EmployeValidator.Validate(dto);
 
         if (!errors.isEmpty())
@@ -42,6 +65,8 @@ public class EmployeServiceImpl implements EmployeService {
             log.error("Employe is not valid");
             throw new InvalidEntityException("Employe non valide" , ErrorCodes.EMPLOYE_NOT_VALID, errors );
         }
+
+
         return EmployeDto.fromEntity(employeRepository.save(EmployeDto.toEntity(dto)));
     }
 
@@ -73,6 +98,20 @@ public class EmployeServiceImpl implements EmployeService {
     }
 
     @Override
+    public EmployeDto findEmployeByCodeEmploye(String codeEmploye) {
+        if (!StringUtils.hasLength(codeEmploye))
+        {
+            log.error("Le code du Employe est null");
+            return null;
+        }
+        Optional<Employe> Employe = employeRepository.findEmployeByCodeEmploye(codeEmploye);
+        EmployeDto dto = EmployeDto.fromEntity(Employe.get());
+
+        return Optional.of(dto).orElseThrow(()->new EntityNotFoundException("Employe not found",ErrorCodes.EMPLOYE_NOT_FOUND));
+
+    }
+
+    @Override
     public List<EmployeDto> findAll() {
         return employeRepository.findAll().stream()
                 .map(EmployeDto::fromEntity).collect(Collectors.toList());
@@ -92,4 +131,6 @@ public class EmployeServiceImpl implements EmployeService {
 
         employeRepository.deleteById(id);
     }
+
+
 }

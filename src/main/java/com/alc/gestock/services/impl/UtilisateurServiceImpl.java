@@ -43,7 +43,30 @@ public class UtilisateurServiceImpl implements UtilisateurService {
             throw new InvalidEntityException("urilisateur not valide" , ErrorCodes.UTILISATEUR_NOT_VALID,errors);
         }
 
-    return UtilisateurDto.fromEntity(utilisateurRepository.save(UtilisateurDto.toEntity(dto)));
+        Optional<Utilisateur> user = utilisateurRepository.findUtilisateurByEmail(dto.getEmail());
+        UtilisateurDto userDto = UtilisateurDto.fromEntity(user.get());
+
+        if (userDto != null)
+        {
+
+            log.warn("utilisateur existe deja");
+            throw new InvalidOperationException("utilisateur existe deja",ErrorCodes.UTILISATEUR_ALREADY_EXIST);
+        }
+
+        return UtilisateurDto.fromEntity(utilisateurRepository.save(UtilisateurDto.toEntity(dto)));
+
+    }
+
+    @Override
+    public UtilisateurDto update(UtilisateurDto dto) {
+        List<String> errors = UtilisateurValidator.Validate(dto);
+
+        if (!errors.isEmpty()){
+            log.error("User not valid");
+            throw new InvalidEntityException("urilisateur not valide" , ErrorCodes.UTILISATEUR_NOT_VALID,errors);
+        }
+
+        return UtilisateurDto.fromEntity(utilisateurRepository.save(UtilisateurDto.toEntity(dto)));
 
     }
 

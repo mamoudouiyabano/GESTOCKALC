@@ -10,6 +10,8 @@ public interface UtilisateurService {
 
     UtilisateurDto save(UtilisateurDto dto);
 
+    UtilisateurDto update(UtilisateurDto dto);
+
 
     UtilisateurDto findById(Integer id);
 

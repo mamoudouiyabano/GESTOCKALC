@@ -25,6 +25,8 @@ public class ItemDto {
 
     private BigDecimal prixUnitaireTtc;
 
+    private BigDecimal quantite;
+
     private CategoryDto category;
 
 
@@ -42,6 +44,7 @@ public class ItemDto {
                 .designation(item.getDesignation())
                 .prixUnitaireHt(item.getPrixUnitaireHt())
                 .prixUnitaireTtc(item.getPrixUnitaireTtc())
+                .quantite(item.getQuantite())
                 .tauxTva(item.getTauxTva())
                 .category(CategoryDto.fromEntity(item.getCategory()))
                 .build();
@@ -60,6 +63,7 @@ public class ItemDto {
         item.setDesignation(itemDto.getDesignation());
         item.setPrixUnitaireHt(itemDto.getPrixUnitaireHt());
         item.setPrixUnitaireTtc(itemDto.getPrixUnitaireTtc());
+        item.setQuantite(itemDto.getQuantite());
         item.setTauxTva(itemDto.getTauxTva());
         item.setCategory(CategoryDto.toEntity(itemDto.getCategory()));
 

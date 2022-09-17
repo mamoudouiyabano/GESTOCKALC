@@ -28,6 +28,9 @@ public class Employe extends AbstractEntity{
     @Column(name = "email")
     private String email;
 
+    @Column(name = "codeEmploye")
+    private String codeEmploye;
+
     @Column(name = "poste")
     private String poste;
 

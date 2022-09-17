@@ -27,6 +27,11 @@ public class EmployeController implements EmployeApi {
     }
 
     @Override
+    public EmployeDto update(EmployeDto dto) {
+        return employeService.update(dto);
+    }
+
+    @Override
     public EmployeDto findById(Integer id) {
         return employeService.findById(id);
     }

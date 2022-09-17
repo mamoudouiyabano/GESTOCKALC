@@ -25,6 +25,8 @@ public class EmployeDto {
 
     private String photo;
 
+    private String codeEmploye;
+
     private String poste;
 
     private Instant dateEmbauche;
@@ -46,6 +48,7 @@ public class EmployeDto {
                 .prenom(employe.getPrenom())
                 .photo(employe.getPhoto())
                 .email(employe.getEmail())
+                .codeEmploye(employe.getCodeEmploye())
                 .poste(employe.getPoste())
                 .dateEmbauche(employe.getDateEmbauche())
                 .build();
@@ -64,6 +67,7 @@ public class EmployeDto {
         employe.setPrenom(employeDto.getPrenom());
         employe.setPhoto(employeDto.getPhoto());
         employe.setEmail(employeDto.getEmail());
+        employe.setCodeEmploye(employeDto.getCodeEmploye());
         employe.setPoste(employeDto.getPoste());
         employe.setDateEmbauche(employeDto.getDateEmbauche());
         return employe;

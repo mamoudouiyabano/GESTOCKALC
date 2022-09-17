@@ -15,7 +15,7 @@ public class LigneCmdEmployeDto {
 
     private ItemDto item;
 
-    @JsonIgnore
+   // @JsonIgnore
     private CommandeEmployeDto commandeEmploye;
 
     private BigDecimal quantite;

@@ -28,6 +28,12 @@ public interface UtilisateurApi {
     })
     UtilisateurDto save(@RequestBody UtilisateurDto dto);
 
+    @PostMapping(value = APP_ROOT + "/utilisateurs/update" , consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Modifier un utilisateur", notes = "permet modifier un utilisateur ", response = UtilisateurDto.class)
+    @ApiResponses(value = {@ApiResponse(code = 200 , message = "L'objet utilisateur est modifie"),
+            @ApiResponse(code = 400 , message = "L'objet utilisateur n'est pas valide")
+    })
+    UtilisateurDto update(@RequestBody UtilisateurDto dto);
     @PostMapping(value = APP_ROOT + "/utilisateurs/changermotdepasse" , consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Changer le mot de passe d'un utilisateur", notes = "permet de modifier le mot de passe d'un utilisateur", response = UtilisateurDto.class)
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "Mot de passe modifie "),
