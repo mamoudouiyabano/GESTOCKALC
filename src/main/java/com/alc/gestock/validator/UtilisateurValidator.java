@@ -25,6 +25,11 @@ public class UtilisateurValidator {
             {
                 errors.add("veuillez renseigner le nom de l'utilisateur");
             }
+
+            if (!StringUtils.hasLength(utilisateurDto.getCodeEmploye()))
+            {
+                errors.add("veuillez renseigner le code de l'employe");
+            }
             if (!StringUtils.hasLength(utilisateurDto.getPrenom()))
             {
                 errors.add("veuillez renseigner le prenom de l'utilisateur");

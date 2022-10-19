@@ -8,10 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,7 +36,7 @@ public interface UtilisateurApi {
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "Mot de passe modifie "),
             @ApiResponse(code = 400 , message = "L'objet utilisateur n'est pas valide")
     })
-    UtilisateurDto changerMotDePasse(ChangerMotDePasseUtilisateurDto dto);
+    UtilisateurDto changerMotDePasse(@RequestBody ChangerMotDePasseUtilisateurDto dto);
 
     @GetMapping(value = APP_ROOT + "/utilisateurs/{idUtilisateur}" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Rechercher un utilisateur par id", notes = "permet de chercher  un utilisateur par id", response = UtilisateurDto.class)
@@ -47,13 +44,19 @@ public interface UtilisateurApi {
             @ApiResponse(code = 404 , message = "aucun utilisateur existant avec cet id") })
     UtilisateurDto findById(@PathVariable("idUtilisateur") Integer id);
 
+    @GetMapping(value = APP_ROOT + "/utilisateurs/email/{email}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Rechercher un utilisateur par email", notes = "permet de chercher  un utilisateur par email", response = UtilisateurDto.class)
+    @ApiResponses(value = {@ApiResponse(code = 200 , message = "L'utilisateur a ete trouve dans la bd"),
+            @ApiResponse(code = 404 , message = "aucun utilisateur existant avec cet email") })
+    UtilisateurDto findByEmail(@PathVariable("email") String email);
+
 
     @GetMapping(value = APP_ROOT + "/utilisateurs/all" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Renvoi liste des utilisateurs", notes = "permet de chercher et renvoyer la liste des utilisateurs", responseContainer = "List<UtilisateurDto>")
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "la liste des utilisateurs") })
     List<UtilisateurDto> findAll();
 
-    @GetMapping(value = APP_ROOT + "/utilisateurs/delete/{idUtilisateur}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = APP_ROOT + "/utilisateurs/delete/{idUtilisateur}" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Supprimer un utilisateur", notes = "permet de supprimer  un utilisateur par id")
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "L'utilisateur a ete supprime dans la bd") })
     void delete(@PathVariable("idUtilisateur") Integer id);

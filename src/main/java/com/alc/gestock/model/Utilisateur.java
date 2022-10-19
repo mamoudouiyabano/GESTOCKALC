@@ -28,8 +28,15 @@ public class Utilisateur extends  AbstractEntity{
     @Column(name = "email")
     private String email;
 
+    @Column(name = "codeEmploye")
+    private String codeEmploye;
+
     @Column(name = "motdepasse")
     private String motDePasse;
+
+
+    @Column(name = "dateembauche")
+    private String dateEmbauche;
 
     @Column(name = "photo")
     private String photo;

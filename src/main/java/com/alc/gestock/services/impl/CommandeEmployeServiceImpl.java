@@ -87,6 +87,7 @@ public class CommandeEmployeServiceImpl implements CommandeEmployeService {
             throw new InvalidEntityException("item n'existe pas dans la bdd",ErrorCodes.ITEM_NOT_FOUND,itemErrors);
         }
 
+        dto.setDateCommande(Instant.now());
         CommandeEmploye savedCmdEmpl = commandeEmployeRepository.save(CommandeEmployeDto.toEntity(dto));
 
         if (dto.getLigneCmdEmployeDtos() != null){

@@ -64,7 +64,7 @@ public interface CommandeEmployeApi {
     })
     ResponseEntity<CommandeEmployeDto> deleteItem(@PathVariable("idCommande") Integer idCommande, @PathVariable("idLigneCommande") Integer idLigneCommande);
 
-    @GetMapping(value = APP_ROOT + "/cmdemployes/{idCmd}" , produces = MediaType.APPLICATION_JSON_VALUE)
+        @GetMapping(value = APP_ROOT + "/cmdemployes/{idCmd}" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Rechercher une commande employe par id", notes = "permet de chercher  une commande employe par id", response = CommandeEmployeDto.class)
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "La Commande employe a ete trouve dans la bd"),
             @ApiResponse(code = 404 , message = "aucune commande employe existant avec cet id") })

@@ -29,7 +29,7 @@ public class EmployeDto {
 
     private String poste;
 
-    private Instant dateEmbauche;
+    private String dateEmbauche;
 
     @JsonIgnore
     private List<CommandeEmploye> commandeEmployes;

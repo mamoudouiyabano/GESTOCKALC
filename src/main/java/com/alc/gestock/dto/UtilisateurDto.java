@@ -22,11 +22,15 @@ public class UtilisateurDto {
 
     private String email;
 
+    private String codeEmploye;
+
     private String motDePasse;
 
     private String photo;
 
     private String role;
+
+    private String dateEmbauche;
 
 
     public static UtilisateurDto fromEntity(Utilisateur utilisateur)
@@ -42,6 +46,8 @@ public class UtilisateurDto {
                 .prenom(utilisateur.getPrenom())
                 .photo(utilisateur.getPhoto())
                 .email(utilisateur.getEmail())
+                .codeEmploye(utilisateur.getCodeEmploye())
+                .dateEmbauche(utilisateur.getDateEmbauche())
                 .motDePasse(utilisateur.getMotDePasse())
                 .role(utilisateur.getRole())
                 .build();
@@ -62,8 +68,10 @@ public class UtilisateurDto {
         utilisateur.setPrenom(utilisateurDto.getPrenom());
         utilisateur.setPhoto(utilisateurDto.getPhoto());
         utilisateur.setEmail(utilisateurDto.getEmail());
+        utilisateur.setCodeEmploye(utilisateurDto.getCodeEmploye());
         utilisateur.setMotDePasse(utilisateurDto.getMotDePasse());
         utilisateur.setRole(utilisateurDto.getRole());
+        utilisateur.setDateEmbauche((utilisateurDto.getDateEmbauche()));
 
         return utilisateur;
 

@@ -42,6 +42,12 @@ public interface EmployeApi {
             @ApiResponse(code = 404 , message = "aucun employe existant avec ce nom") })
     EmployeDto findByNomEmploye(@PathVariable("nomEmploye") String nomEmploye);
 
+    @GetMapping(value = APP_ROOT + "/employes/code/{codeEmploye}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Rechercher un employe par son code", notes = "permet de chercher  un employe par code", response = EmployeDto.class)
+    @ApiResponses(value = {@ApiResponse(code = 200 , message = "Le employe a ete trouve dans la bd"),
+            @ApiResponse(code = 404 , message = "aucun employe existant avec ce code") })
+    EmployeDto findEmployeByCodeEmploye(@PathVariable("codeEmploye") String codeEmploye);
+
     @GetMapping(value = APP_ROOT + "/employes/all" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Renvoi la liste de tous les employe", notes = "permet de chercher et de renvoyer la liste des employes", responseContainer = "List<EmployeDto>")
     @ApiResponses(value = {@ApiResponse(code = 200 , message = "Le employe a ete trouve dans la bd") })

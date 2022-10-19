@@ -34,10 +34,10 @@ public class ItemValidator {
         {
             errors.add("Veuillez renseiger le PU HT de l'item");
         }
-        if (itemDto.getPrixUnitaireTtc() == null)
-        {
-            errors.add("Veuillez renseiger le PU TTC de l'item");
-        }
+//        if (itemDto.getPrixUnitaireTtc() == null)
+//        {
+//            errors.add("Veuillez renseiger le PU TTC de l'item");
+//        }
 
         if (itemDto.getCategory() == null)
         {

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -37,6 +38,7 @@ public class EmployeServiceImpl implements EmployeService {
     public EmployeDto save(EmployeDto dto) {
 
         List<String> errors = EmployeValidator.Validate(dto);
+        EmployeDto savedEmploye;
 
         if (!errors.isEmpty()){
             log.error("Employe not valid");
@@ -44,16 +46,22 @@ public class EmployeServiceImpl implements EmployeService {
         }
 
         Optional<Employe> employe = employeRepository.findEmployeByCodeEmploye(dto.getCodeEmploye());
-        EmployeDto employeDto = EmployeDto.fromEntity(employe.get());
+        //EmployeDto employeDto = EmployeDto.fromEntity(employe.get());
 
-        if (employeDto != null)
+        if (employe.isPresent())
         {
 
             log.warn("l employe existe deja");
             throw new InvalidOperationException("l employe existe deja",ErrorCodes.EMPLOYE_ALREADY_EXIST);
         }
+        else {
 
-        return EmployeDto.fromEntity(employeRepository.save(EmployeDto.toEntity(dto)));
+            log.warn("processing");
+            savedEmploye = EmployeDto.fromEntity(employeRepository.save(EmployeDto.toEntity(dto)));
+
+        }
+
+        return savedEmploye;
     }
 
     @Override

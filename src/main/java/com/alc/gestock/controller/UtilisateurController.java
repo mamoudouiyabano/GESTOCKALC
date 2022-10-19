@@ -42,6 +42,11 @@ public class UtilisateurController implements UtilisateurApi {
     }
 
     @Override
+    public UtilisateurDto findByEmail(String email) {
+        return utilisateurService.findByEmail(email);
+    }
+
+    @Override
     public List<UtilisateurDto> findAll() {
         return utilisateurService.findAll();
     }

@@ -54,24 +54,33 @@ public class ItemServiceimpl implements ItemService {
         }
 
         Optional<Item> item = itemRepository.findItemByCodeItem(dto.getCodeItem());
-        ItemDto itemDto = ItemDto.fromEntity(item.get());
 
-        ItemDto  savedItem2 = ItemDto.fromEntity(ItemDto.toEntity(dto));
-        savedItem2.setId(itemDto.getId());
+        try {
+            ItemDto itemDto = ItemDto.fromEntity(item.get());
+            ItemDto  savedItem2 = ItemDto.fromEntity(ItemDto.toEntity(dto));
+            savedItem2.setId(itemDto.getId());
 
-        if (itemDto != null)
-        {
+            if (itemDto != null)
+            {
 
-            dto.setQuantite(
-                    BigDecimal.valueOf(
-                            Math.abs(dto.getQuantite().doubleValue() + itemDto.getQuantite().doubleValue())
-                    )
-            );
-            dto.setId(itemDto.getId());
+                dto.setQuantite(
+                        BigDecimal.valueOf(
+                                Math.abs(dto.getQuantite().doubleValue() + itemDto.getQuantite().doubleValue())
+                        )
+                );
+                dto.setId(itemDto.getId());
+            }
+
+            updateMvtStk(savedItem2);
+
+        } catch (Exception e) {
+
+
         }
 
+
         ItemDto savedItem  = ItemDto.fromEntity(itemRepository.save(ItemDto.toEntity(dto)));
-        updateMvtStk(savedItem2);
+
         return savedItem;
     }
 

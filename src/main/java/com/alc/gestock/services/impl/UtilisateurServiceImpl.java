@@ -37,6 +37,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public UtilisateurDto save(UtilisateurDto dto) {
         List<String> errors = UtilisateurValidator.Validate(dto);
+        UtilisateurDto savedUser;
 
         if (!errors.isEmpty()){
             log.error("User not valid");
@@ -44,16 +45,21 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         }
 
         Optional<Utilisateur> user = utilisateurRepository.findUtilisateurByEmail(dto.getEmail());
-        UtilisateurDto userDto = UtilisateurDto.fromEntity(user.get());
+        //UtilisateurDto userDto = UtilisateurDto.fromEntity(user.get());
 
-        if (userDto != null)
+        if (user.isPresent())
         {
 
             log.warn("utilisateur existe deja");
             throw new InvalidOperationException("utilisateur existe deja",ErrorCodes.UTILISATEUR_ALREADY_EXIST);
         }
 
-        return UtilisateurDto.fromEntity(utilisateurRepository.save(UtilisateurDto.toEntity(dto)));
+        else {
+            log.warn("processing");
+            savedUser = UtilisateurDto.fromEntity(utilisateurRepository.save(UtilisateurDto.toEntity(dto)));
+        }
+
+        return savedUser;
 
     }
 

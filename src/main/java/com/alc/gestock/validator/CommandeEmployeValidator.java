@@ -26,10 +26,10 @@ public class CommandeEmployeValidator {
             errors.add("Veuillez renseigner le code de la commande");
         }
 
-        if (commandeEmployeDto.getDateCommande() == null)
-        {
-            errors.add("Veuillez renseigner la date de la commande");
-        }
+//        if (commandeEmployeDto.getDateCommande() == null)
+//        {
+//            errors.add("Veuillez renseigner la date de la commande");
+//        }
 
         if (commandeEmployeDto.getEmploye().getId() == null)
         {

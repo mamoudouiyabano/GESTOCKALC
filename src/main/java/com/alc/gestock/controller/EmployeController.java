@@ -42,6 +42,11 @@ public class EmployeController implements EmployeApi {
     }
 
     @Override
+    public EmployeDto findEmployeByCodeEmploye(String codeEmploye) {
+        return employeService.findEmployeByCodeEmploye(codeEmploye);
+    }
+
+    @Override
     public List<EmployeDto> findAll() {
         return employeService.findAll();
     }
