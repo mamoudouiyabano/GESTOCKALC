@@ -1,25 +1,48 @@
+#
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/gestock?createDatabaseIfNotExist=true
+#    username: root
+#    password:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+#  ## Specify DBMS
+#  jpa:
+#    database: MYSQL
+#    show-sql: false
+#    #Hibernate DDL Auto (create, create-drop, update)
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5Dialect
+#server:
+#  port : 8084
+
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/gestock?createDatabaseIfNotExist=true
-    username: root
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://ec2-44-210-228-110.compute-1.amazonaws.com:5432/da35606sidqi3g
+    username: euknvbaikoxnar
+    password: 2361d3b73508a7838fcae0977fe561b4a73f74fe6ac09de160eb4c9743a8f821
+
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
   ## Specify DBMS
   jpa:
-    database: MYSQL
+    #database: MYSQL
     show-sql: false
     #Hibernate DDL Auto (create, create-drop, update)
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-server:
-  port : 8084
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
 
 flickr:
   apiKey: 7f619d432c1c0f054eac39ff12b09e55
